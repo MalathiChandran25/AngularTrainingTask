@@ -1,0 +1,2 @@
+# AngularTrainingTask
+angular training task 
