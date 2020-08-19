@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "studenttask"
+    }
+  },
+  "defaultProject": "studenttask",
+  "cli": {
+    "analytics": "d5754559-204d-439f-9bd6-59f101d8d94e"
+  }
 }
