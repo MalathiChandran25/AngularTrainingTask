@@ -1,5 +1,4 @@
 <header class="head">
-    <!-- <div class="head__"> -->
     <h3 class="head__h3">
         Students
     </h3>
@@ -7,13 +6,12 @@
         <button class="head__btn-style">LOGIN</button>
         <button class="head__btn-style">SIGNUP</button>
     </div>
-    <!-- </div> -->
 </header>
 <main class="main">
     <section class="section container">
-        <app-student-details [studentdatalist]="data" (selectedstudent)="selectedstudentdata($event)"></app-student-details>
-        <div *ngIf="studentdata" class="section__card">
+        <app-student-details [studentdatalist]="studentdatalist" (selectedstudent)="selectedstudentdata($event)"></app-student-details>
+        <!--<div *ngIf="studentdata" class="section__card">
             <app-student-card [studentcarddetails]="studentdata"></app-student-card>
-        </div>
+        </div>-->
     </section>
 </main>

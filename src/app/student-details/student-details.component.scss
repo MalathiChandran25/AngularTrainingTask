@@ -7,6 +7,9 @@ $blue :#2E9CCA;
     text-align: left;
     border: 0;
     margin: 0 auto;
+    padding: 20px 10px;
+    font-size: 24px;
+    font-family: Helvetica Neue;
     &__tr-oddrow {
         background-color: $white;
         color: $black;
@@ -30,8 +33,10 @@ $blue :#2E9CCA;
         color: $blue;
         border: 0px;
         th {
-            padding: 20px auto;
             border-top: 0px;
+            padding: 20px 10px;
+            font-size: 24px;
+            font-family: Helvetica Neue;
         }
     }
 }

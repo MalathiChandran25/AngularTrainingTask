@@ -1,5 +1,8 @@
 import { students } from './../students';
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { StudentdataService } from '../studentdata.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-student-card',
@@ -8,13 +11,27 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StudentCardComponent implements OnInit {
 
-  @Input() studentcarddetails : students;
+  // @Input() studentcarddetails : students;
 
   no_value :string = 'NA';
 
-  constructor() { }
+  studentcarddetails : students;
+
+
+  constructor(private route: ActivatedRoute,
+    private Userservice: StudentdataService,
+    private location: Location) { }
+
+    getStudentData(): void {
+      console.log("data got");
+      const name = this.route.snapshot.paramMap.get('Name');
+      console.log(name);
+      this.Userservice.getStudentData(name)
+          .subscribe(studentcarddetails => this.studentcarddetails = studentcarddetails);
+    }
 
   ngOnInit(): void {
+    this.getStudentData();
   }
 
 }

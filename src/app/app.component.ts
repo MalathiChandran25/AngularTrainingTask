@@ -9,11 +9,11 @@ import { StudentdataService } from './studentdata.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'demo1';
+  title = 'students';
 
   // studentlist : students[] = STUDENTS;
 
-  data : students[];
+  studentdatalist : students[];
 
   
   constructor(private studentlist : StudentdataService) { }
@@ -21,8 +21,11 @@ export class AppComponent {
   ngOnInit(): void {
     this.studentlist.getdatas().subscribe((result) => {
         console.log(result);
-        this.data=result;
-      })
+        this.studentdatalist=result;
+        this.studentlist.addstudentdata(this.studentdatalist);
+    })
+    
+    
   }
 
   studentdata : students;

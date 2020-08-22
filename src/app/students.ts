@@ -1,5 +1,5 @@
 export interface students{
-    regestrationNo:string;
+    RegestrationNo:string;
     Name:string;
     Class:string;
     Division:string;

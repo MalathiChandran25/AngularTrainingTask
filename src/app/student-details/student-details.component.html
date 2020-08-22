@@ -14,9 +14,10 @@
                 <td>{{student.RegestrationNo}}</td>
                 <td>{{student.Class}}</td>
                 <td>{{student.Rank}}</td>
-                <td (click)="onSelect(student)" class="table__td-image"><img src=" /assets/rightArrow.png" class="arrow_img" title="rightarrow" alt="rigtharrowImg"></td>
+                <td routerLink="/studentdetails/{{student.Name}}" class="table__td-image"><img src=" /assets/rightArrow.png" class="arrow_img" title="rightarrow" alt="rigtharrowImg"></td>
             </tr>
         </tbody>
     </table>
 </div>
 <ng-template #elseBlock>No Data Found on th Student Table</ng-template>
+<router-outlet></router-outlet>

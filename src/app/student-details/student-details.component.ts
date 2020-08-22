@@ -15,9 +15,10 @@ export class StudentDetailsComponent {
   @Output() selectedstudent:EventEmitter<students> = new EventEmitter<students>();
 
   // studentdetail : students;
-  onSelect(student : students) {
-    this.selectedstudent.emit(student);
-  }
+  // onSelect(student : students) {
+  //   this.selectedstudent.emit(student);
+  // }
+
 
 
 }
