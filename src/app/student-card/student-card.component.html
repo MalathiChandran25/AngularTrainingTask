@@ -1,32 +1,38 @@
-<div class="card container">
-    <h2 class="card__title">Student Details</h2>
-    <div class="card__body">
-        <div class="row">
-            <div class="col-sm-3 title">Student Name</div>
-            <div class="col-sm-3 data">{{studentcarddetails.Name || no_value}}</div>
-            <div class="col-sm-3 title">Fees</div>
-            <div class="col-sm-3 data">{{studentcarddetails.Fee || no_value}}</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 title">Class</div>
-            <div class="col-sm-3 data">{{studentcarddetails.Class || no_value}}</div>
-            <div class="col-sm-3 title">Due Date</div>
-            <div class="col-sm-3 data">{{studentcarddetails.DueDate || no_value}}</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 title">Division</div>
-            <div class="col-sm-3 data">{{studentcarddetails.Division || no_value}}</div>
-            <div class="col-sm-3 title">Contact No.</div>
-            <div class="col-sm-3 data">{{studentcarddetails.ContactNo || no_value}}</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 title">Rank</div>
-            <div class="col-sm-3 data">{{studentcarddetails.Rank || no_value}}</div>
-            <div class="col-sm-3 title">Address</div>
-            <div class="col-sm-3 data">
-                <address class="line_ellipsis">
+<div>
+    <button (click)="goBack()" class="back_btn">
+        <img src="../../assets/back_icon.png" class="back_icon_img" title="back_icon" alt="back_icon">
+        back
+    </button>
+    <div class="card container">
+        <h2 class="card__title">Student Details</h2>
+        <div class="card__body">
+            <div class="row">
+                <div class="col-sm-3 title">Student Name</div>
+                <div class="col-sm-3 data">{{studentcarddetails.Name || no_value}}</div>
+                <div class="col-sm-3 title">Fees</div>
+                <div class="col-sm-3 data">{{studentcarddetails.Fee || no_value}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 title">Class</div>
+                <div class="col-sm-3 data">{{studentcarddetails.Class || no_value}}</div>
+                <div class="col-sm-3 title">Due Date</div>
+                <div class="col-sm-3 data">{{studentcarddetails.DueDate || no_value}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 title">Division</div>
+                <div class="col-sm-3 data">{{studentcarddetails.Division || no_value}}</div>
+                <div class="col-sm-3 title">Contact No.</div>
+                <div class="col-sm-3 data">{{studentcarddetails.ContactNo || no_value}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 title">Rank</div>
+                <div class="col-sm-3 data">{{studentcarddetails.Rank || no_value}}</div>
+                <div class="col-sm-3 title">Address</div>
+                <div class="col-sm-3 data">
+                    <address class="line_ellipsis">
                     {{studentcarddetails.Address || no_value}}
                 </address>
+                </div>
             </div>
         </div>
     </div>

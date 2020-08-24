@@ -1,3 +1,4 @@
+
 import { students } from './students';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
@@ -16,7 +17,7 @@ export class StudentdataService {
   getdatas(){
     return this.http.get<students[]>(this.url);
   }
-  addstudentdata(studentsdatas){
+  addstudentdata(studentsdatas : students[]){
     console.log("data come");
     console.log(studentsdatas);
     this.studentDataObject = studentsdatas;
@@ -24,12 +25,8 @@ export class StudentdataService {
     console.log(this.studentDataObject);
   }
 
-  // addDatas(studentdetails : students[]){
-  //   this.studentDataObject = studentdetails;
-  //   console.log("add data into service");
-  //   console.log(this.studentDataObject);
-  // }
   getStudentData(name : string): Observable <students>{
     return of(this.studentDataObject.find(student => student.Name === name) );
   }
+
 }

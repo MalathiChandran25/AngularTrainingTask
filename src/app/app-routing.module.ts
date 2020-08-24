@@ -1,14 +1,19 @@
+import { StudentDetailsComponent } from './student-details/student-details.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { StudentCardComponent } from './student-card/student-card.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  // { 
-  //   path: '', 
-  //   redirectTo: '/home', 
-  //   pathMatch: 'full' 
-  // },
+  { 
+    path: '', 
+    redirectTo: '/studentlist', 
+    pathMatch: 'full' 
+  },
+  {
+    path: 'studentlist',
+    component: StudentDetailsComponent
+  },
   {
     path: 'studentdetails/:Name',
     component: StudentCardComponent

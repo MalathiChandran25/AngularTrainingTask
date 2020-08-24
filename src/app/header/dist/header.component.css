@@ -1,0 +1,63 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 150px;
+  background-color: black;
+}
+.head__h3 {
+  padding: 10px;
+  margin-left: 20px;
+  color: #707070;
+}
+.head__btn {
+  margin: 10px 20px;
+}
+.head__btn-style {
+  font: Italic 14px/16px Roboto;
+  color: #36F498;
+  text-transform: uppercase;
+  opacity: 1;
+  padding: 10px;
+  border-radius: 4px;
+  background: #FFFFFF padding-box;
+  margin: 0px 10px;
+}
+.head__btn .signup {
+  color: #11B9F0;
+}
+
+.modal-dialog {
+  width: 733px;
+  margin: 100px auto;
+}
+
+.close_btn {
+  float: right;
+  margin: 20px 10px 0px 0px;
+  background: none;
+  /* outline: none; */
+  border: 0px;
+}
+
+.modal_title {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 40px;
+}
+
+.modal-body {
+  padding: 50px 100px;
+}
+
+.modal-footer {
+  justify-content: center;
+  border: 0px;
+}
+
+@media only screen and (min-width: 576px) {
+  .modal-dialog {
+    width: 733px;
+    margin: 100px auto;
+    padding: 50px;
+  }
+}

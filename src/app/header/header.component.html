@@ -1,0 +1,21 @@
+<header class="head">
+    <h3 class="head__h3">
+        Students
+    </h3>
+    <div class="head__btn">
+        <button class="head__btn-style" (click)="open(mymodals)">LOGIN</button>
+        <button class="head__btn-style signup">SIGNUP</button>
+    </div>
+</header>
+
+<ng-template #mymodals let-modal>
+    <div class="modal_header">
+        <button type="button" class="close_btn" (click)="modal.dismiss( 'Cross click') ">
+            <img src="../../assets/cancel.svg ">
+        </button>
+        <h4 class="modal_title">Login</h4>
+    </div>
+    <div class="modal-body ">
+        <app-login></app-login>
+    </div>
+</ng-template>

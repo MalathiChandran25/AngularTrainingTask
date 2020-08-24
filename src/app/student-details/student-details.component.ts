@@ -7,18 +7,27 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './student-details.component.html',
   styleUrls: ['./student-details.component.scss']
 })
-export class StudentDetailsComponent {
+export class StudentDetailsComponent{
 
 
-  @Input() studentdatalist : any;
+  // @Input() studentdatalist : any;
 
-  @Output() selectedstudent:EventEmitter<students> = new EventEmitter<students>();
+  // @Output() selectedstudent:EventEmitter<students> = new EventEmitter<students>();
 
   // studentdetail : students;
   // onSelect(student : students) {
   //   this.selectedstudent.emit(student);
   // }
+  studentdatalist : students[];
+  
+  constructor(private studentlist : StudentdataService) { }
 
-
+  ngOnInit(): void {
+    this.studentlist.getdatas().subscribe((result) => {
+        console.log(result);
+        this.studentdatalist=result;
+        this.studentlist.addstudentdata(this.studentdatalist);
+    })    
+  }
 
 }

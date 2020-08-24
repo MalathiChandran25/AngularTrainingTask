@@ -11,6 +11,7 @@ import {Location} from '@angular/common';
 })
 export class StudentCardComponent implements OnInit {
 
+
   // @Input() studentcarddetails : students;
 
   no_value :string = 'NA';
@@ -22,13 +23,17 @@ export class StudentCardComponent implements OnInit {
     private Userservice: StudentdataService,
     private location: Location) { }
 
-    getStudentData(): void {
-      console.log("data got");
-      const name = this.route.snapshot.paramMap.get('Name');
-      console.log(name);
-      this.Userservice.getStudentData(name)
-          .subscribe(studentcarddetails => this.studentcarddetails = studentcarddetails);
-    }
+  getStudentData(): void {
+    console.log("data got");
+    const name = this.route.snapshot.paramMap.get('Name');
+    console.log(name);
+    this.Userservice.getStudentData(name)
+        .subscribe(studentcarddetails => this.studentcarddetails = studentcarddetails);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 
   ngOnInit(): void {
     this.getStudentData();

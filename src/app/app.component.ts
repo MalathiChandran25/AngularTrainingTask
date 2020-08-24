@@ -1,3 +1,4 @@
+import { HeaderComponent } from './header/header.component';
 import { STUDENTS } from './studentsList';
 import { students } from './students';
 import { Component } from '@angular/core';
@@ -19,13 +20,11 @@ export class AppComponent {
   constructor(private studentlist : StudentdataService) { }
 
   ngOnInit(): void {
-    this.studentlist.getdatas().subscribe((result) => {
-        console.log(result);
-        this.studentdatalist=result;
-        this.studentlist.addstudentdata(this.studentdatalist);
-    })
-    
-    
+    // this.studentlist.getdatas().subscribe((result) => {
+    //     console.log(result);
+    //     this.studentdatalist=result;
+    //     this.studentlist.addstudentdata(this.studentdatalist);
+    // })    
   }
 
   studentdata : students;
