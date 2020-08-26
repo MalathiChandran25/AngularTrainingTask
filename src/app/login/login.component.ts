@@ -1,7 +1,8 @@
 import { UsersdataService } from './../usersdata.service';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, AbstractControl, ValidatorFn, FormBuilder } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup, AbstractControl, Validators, FormBuilder } from '@angular/forms';
 import {Users} from '../users';
+import { NgbModal,ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import{HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -12,60 +13,64 @@ import {Observable} from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm = new FormGroup({
-    name : new FormControl(''),
-    password : new FormControl(''),
-  });
+  loginForm = new FormGroup({});
 
-  user : boolean;
+  error : string;
 
-  userdatalist : Users[];
+  typeValue : boolean = false;
 
-  constructor(private userservice : UsersdataService,private formBuilder : FormBuilder,public httpClient: HttpClient) { }
-  
-  sendPostRequest(data: any) {
-    console.log("request inside data");
-    console.log(data);
-    return this.httpClient.post('http://localhost:3001/login', data);
+  closeResult: string;
+
+  @Output() changeModal: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  public sendchangeModalValue(data : boolean) : void{
+    this.changeModal.emit(data);
   }
 
+  constructor(private userservice : UsersdataService,public httpClient: HttpClient,private modalService: NgbModal,private fb : FormBuilder) { }
+  
   ngOnInit(): void {
-    this.userservice.getusers().subscribe((result) => {
-      console.log(result);
-      this.userdatalist=result;
-      console.log("userdatalist");
-      console.log(this.userdatalist);
-  });
-  
+    this.loginForm = this.fb.group({
+      name : ['',[Validators.required]],
+      password: ['',[Validators.required]],
+    });
   }
 
-  getname(){
-    return this.loginForm.get('name');
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
-  getpassword(){
-    return this.loginForm.get('password');
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } 
+    else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } 
+    else {
+      return  `with: ${reason}`;
+    }
+  }
+
+  displayInputField(){
+    this.typeValue = true;
   }
 
   onSubmit(){
-    this.sendPostRequest(this.loginForm.value).subscribe(
-      res => {
+    this.userservice.sendPostRequest(this.loginForm.value).subscribe(
+      (res) => {
         console.log("post res");
         console.log(res);
+        this.error = "";
+      },
+      (error) => {
+        this.error = error.error.error;
       }
     );
-    if((this.userdatalist.find(userdata => userdata.password === this.loginForm.controls['password'].value) && ((this.userdatalist.find(userdata => userdata.name === this.loginForm.controls['username'].value) || this.userdatalist.find(userdata => userdata.email === this.loginForm.controls['name'].value))))){
-      console.log("match data");
-      this.user = false;
-    }
-    else{
-      console.log("unmatch data");
-      this.user = true;
-    }
-    if (this.loginForm.valid) {
-      console.log("Form valid ");
-    }
-    console.log(this.loginForm.value);
   }
-
 }
 

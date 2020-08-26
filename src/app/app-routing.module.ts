@@ -3,6 +3,7 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { StudentCardComponent } from './student-card/student-card.component';
 import { AppComponent } from './app.component';
+import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
   { 
@@ -18,6 +19,10 @@ const routes: Routes = [
     path: 'studentdetails/:Name',
     component: StudentCardComponent
   }
+  // {
+  //   path: 'studentlist/login',
+  //   component: LoginComponent
+  // }
 ];
 
 @NgModule({

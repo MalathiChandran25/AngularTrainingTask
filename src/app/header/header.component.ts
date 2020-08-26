@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal,ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,14 @@ import { NgbModal,ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class HeaderComponent implements OnInit {
 
   closeResult: string;
+
+  displayChangePassword : boolean = false;
+
+  openLogin : boolean;
+
+  displayLoginPage : boolean = false;
+
+  stopCrossopen : boolean = true;
   
   constructor(private modalService: NgbModal) {}
     
@@ -32,7 +41,29 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  toggleOpenLoginVar(change : boolean){
+    this.openLogin = change;
+  }
+
   ngOnInit(): void {
+  }
+
+  changePasswordModal(displayModal : boolean):void{
+    this.displayChangePassword = displayModal;
+    if(this.openLogin){
+     this.openLogin = true;
+    }
+  }
+
+  loginPage(displayLogin : boolean): void{
+    this.openLogin = false;
+    this.displayChangePassword = false;
+  }
+
+  openLoginModal(modalName, modalChangevalue){
+    this.displayChangePassword = false;
+    this.open(modalName);
+    this.toggleOpenLoginVar(modalChangevalue);
   }
 
 }

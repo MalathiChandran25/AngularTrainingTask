@@ -3,19 +3,39 @@
         Students
     </h3>
     <div class="head__btn">
-        <button class="head__btn-style" (click)="open(mymodals)">LOGIN</button>
-        <button class="head__btn-style signup">SIGNUP</button>
+        <button class="head__btn-style" (click)="openLoginModal(mymodallogin,false)">LOGIN</button>
+        <button class="head__btn-style signup" (click)="openLoginModal(mymodallogin,true)">SIGNUP</button>
     </div>
 </header>
 
-<ng-template #mymodals let-modal>
+<ng-template #mymodallogin let-modal>
     <div class="modal_header">
         <button type="button" class="close_btn" (click)="modal.dismiss( 'Cross click') ">
             <img src="../../assets/cancel.svg ">
         </button>
-        <h4 class="modal_title">Login</h4>
+        <h4 class="modal_title" *ngIf="!displayChangePassword && !openLogin">Login</h4>
+        <h4 class="modal_title" *ngIf="(displayChangePassword)">Change Password</h4>
+        <h4 class="modal_title" *ngIf="openLogin">SignUp</h4>
     </div>
-    <div class="modal-body ">
-        <app-login></app-login>
+    <div class="modal-body" *ngIf="!displayChangePassword && !openLogin">
+        <app-login (changeModal)="changePasswordModal($event)"></app-login>
+    </div>
+    <div class="modal-body" *ngIf="displayChangePassword">
+        <app-changepassword ></app-changepassword>
+    </div>
+    <div class="modal-body" *ngIf="openLogin">
+        <app-signup (goToLogin)="loginPage($event)"></app-signup>
     </div>
 </ng-template>
+
+<!--<ng-template #mymodalsignup let-modals>
+    <div class="modal_header">
+        <button type="button" class="close_btn" (click)="modals.dismiss( 'Cross click') ">
+            <img src="../../assets/cancel.svg ">
+        </button>
+        <h4 class="modal_title">Sign Up</h4>
+    </div>
+    <div class="modal-body">
+        <app-signup></app-signup>
+    </div>
+</ng-template>-->

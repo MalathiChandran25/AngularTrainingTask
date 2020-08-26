@@ -10,6 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { LoginComponent } from './login/login.component';
     StudentCardComponent,
     HeaderComponent,
     LoginComponent,
+    SignupComponent,
+    ChangepasswordComponent,
   ],
   imports: [
     BrowserModule,

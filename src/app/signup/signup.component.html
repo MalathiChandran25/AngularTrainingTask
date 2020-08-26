@@ -1,0 +1,36 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" #myform="ngForm">
+    <div class="form-group">
+        <label class="label" (click)="displayInputField()" [ngClass]="(typeValue)? 'typeText':'clickText'">
+        User Name <br>
+        <input type="text" name="name" formControlName="name" class="form-control">
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="label" [ngClass]="(typeValue)? 'typeText':'clickText'">
+        Email <br>
+        <input type="text" name="email" formControlName="email" class="form-control">
+        </label>
+    </div>
+    <div class="form-group" [ngClass]="(typeValue)? 'typeText':'clickText'">
+        <label class="label">
+        Password<br>
+        <input type="password" name="password" formControlName="password" class="form-control">
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="label" [ngClass]="(typeValue)? 'typeText':'clickText'">
+        role<br>
+        <input type="text" name="role" formControlName="role" class="form-control">
+        </label>
+    </div>
+    <div class="check_terms">
+        <input type="checkbox" name="check_terms">
+        <label class="check_terms__label">I read and agree to <a href="#">Terms and Condition</a></label>
+    </div>
+    <div class="form-group__btn">
+        <button type="submit " [disabled]="signupForm.invalid" class="signup-btn ">Signup</button>
+    </div>
+    <div class="form-group__login_link">
+    <label>Already have an account?  <a class="login_link" (click)="gotoLoginPage(true)">Login</a></label>
+    </div>
+</form>
