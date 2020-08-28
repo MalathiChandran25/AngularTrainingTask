@@ -3,8 +3,9 @@
         Students
     </h3>
     <div class="head__btn">
-        <button class="head__btn-style" (click)="openLoginModal(mymodallogin,false)">LOGIN</button>
-        <button class="head__btn-style signup" (click)="openLoginModal(mymodallogin,true)">SIGNUP</button>
+        <button class="head__btn-style" *ngIf="!profileNameValue" (click)="openLoginModal(mymodallogin,false)">LOGIN</button>
+        <button class="head__btn-style signup" *ngIf="!profileNameValue" (click)="openLoginModal(mymodallogin,true)">SIGNUP</button>
+        <button class="head__profileName" *ngIf="profileNameValue">{{profileNameValue}}</button>
     </div>
 </header>
 
@@ -18,13 +19,13 @@
         <h4 class="modal_title" *ngIf="openLogin">SignUp</h4>
     </div>
     <div class="modal-body" *ngIf="!displayChangePassword && !openLogin">
-        <app-login (changeModal)="changePasswordModal($event)"></app-login>
+        <app-login (changeModal)="changePasswordModal($event)" (submittedFormvalue)="changeToProfileName($event)" [modalname]="modal"></app-login>
     </div>
     <div class="modal-body" *ngIf="displayChangePassword">
-        <app-changepassword ></app-changepassword>
+        <app-changepassword [modalname]="modal"></app-changepassword>
     </div>
     <div class="modal-body" *ngIf="openLogin">
-        <app-signup (goToLogin)="loginPage($event)"></app-signup>
+        <app-signup (goToLogin)="loginPage($event)" [modalname]="modal"></app-signup>
     </div>
 </ng-template>
 

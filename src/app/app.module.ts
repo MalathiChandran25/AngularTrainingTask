@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { SuccesspasswordpageComponent } from './successpasswordpage/successpasswordpage.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
     LoginComponent,
     SignupComponent,
     ChangepasswordComponent,
+    SuccesspasswordpageComponent,
   ],
   imports: [
     BrowserModule,

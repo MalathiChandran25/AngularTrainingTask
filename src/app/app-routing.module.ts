@@ -3,7 +3,8 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { StudentCardComponent } from './student-card/student-card.component';
 import { AppComponent } from './app.component';
-import {LoginComponent} from './login/login.component';
+import { LoginComponent } from './login/login.component';
+import { SuccesspasswordpageComponent } from './successpasswordpage/successpasswordpage.component'
 
 const routes: Routes = [
   { 
@@ -18,11 +19,12 @@ const routes: Routes = [
   {
     path: 'studentdetails/:Name',
     component: StudentCardComponent
+  },
+  {
+    path: 'successpassword',
+    component: SuccesspasswordpageComponent,
+    data: {data: 'Test data'}
   }
-  // {
-  //   path: 'studentlist/login',
-  //   component: LoginComponent
-  // }
 ];
 
 @NgModule({

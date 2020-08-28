@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal,ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup } from '@angular/forms';
+import { UsersdataService } from './../usersdata.service';
+
 
 @Component({
   selector: 'app-header',
@@ -17,9 +19,9 @@ export class HeaderComponent implements OnInit {
 
   displayLoginPage : boolean = false;
 
-  stopCrossopen : boolean = true;
+  profileNameValue : string ="";
   
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal,private userservice:UsersdataService) {}
     
   open(content) {
     this.modalService.open(content).result.then((result) => {
@@ -53,6 +55,26 @@ export class HeaderComponent implements OnInit {
     if(this.openLogin){
      this.openLogin = true;
     }
+  }
+
+  changeToProfileName(event : any):void{
+    console.log("profileName variable");
+    console.log(event);
+    // this.profileNameValue = profileName;
+    // console.log(this.profileNameValue);
+
+    this.userservice.sendPostRequest(event).subscribe(
+        (res) => {
+          console.log("post res");
+          console.log(res);
+          this.profileNameValue = event.name;
+          console.log(this.profileNameValue);
+          // mymodallogin.dismiss("logged in successfully");
+        },
+        (error) => {
+          // this.error = error.error.error;
+          console.log(error.error.error);
+        });
   }
 
   loginPage(displayLogin : boolean): void{

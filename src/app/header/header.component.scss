@@ -24,6 +24,9 @@
             color: #11B9F0;
         }
     }
+    button:focus{
+        outline: none;
+    }
 }
 
 .modal-dialog {
